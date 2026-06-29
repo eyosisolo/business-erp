@@ -12,3 +12,4 @@ A Python business management application that helps small businesses manage prod
 ## Technologies
 
 - Python
+# business-crm
