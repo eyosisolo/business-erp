@@ -13,11 +13,11 @@ def create_product_table():
     )
     """)
 
-def add_product(name, price, stock):
+def add_product(product):
     cursor.execute("""
     INSERT INTO products(name, price, stock
     VALUES (?, ?, ?)
-    """,(name, price, stock) )
+    """,(product.name, product.price, product.stock) )
     print("Product added!")
 def view_products():
     cursor.execute("SELECT * FROM products")

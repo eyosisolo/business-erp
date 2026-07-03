@@ -52,5 +52,10 @@ def main_menu():
             print("Exiting the program.")
             break
         else:
-            print("Invalid choice. Please try again.")
+         print("Invalid choice. Please try again.")
+from models.product import Product
+
+lipstick = Product("Lipstick", 450, 30)
+
+lipstick.display()
     
