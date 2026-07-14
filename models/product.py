@@ -17,3 +17,13 @@ class Product:
         print("Name:", self.name)
         print("Price:", self.price)
         print("Stock:", self.stock)
+      
+    def __str__(self):
+
+        return (
+            f"{self.name} | "
+            f"Price: {self.price} | "
+            f"Stock: {self.stock}"
+        )
+    def is_low_stock(self):
+        return self.stock <= 5

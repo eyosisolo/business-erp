@@ -1,5 +1,8 @@
 #Mini Project 2
 from modules import inventory
+from models.product import Product
+from services.inventory_service import InventoryService
+service = InventoryService()
 print("Business ERP Database Started")
 #Mini Project 3 – Build a Simple Menu
 def main_menu():
@@ -18,26 +21,27 @@ def main_menu():
             inventory.create_product_table()
             print("Product table created!")
         elif choice == "2":
-            name = input("Enter product name: ")
+          
             while True:
-                name = str(input("name:")).strip()
+                name = str(input("Enter product name:")).strip()
                 if name != "":
                      break
                 print("Product name cannot be empty. Please enter a valid name.")
                 
-            price = float(input("Enter product price: "))
+            
             while True:
               price = float(input("Price: "))
               if price > 0:
                break
               print("Price must be greater than zero.")
-            stock = int(input("Enter product stock: "))
+            
             while True:
               stock = int(input("Stock: "))
               if stock >= 0:
                break
             print("Stock cannot be negative.")
-            inventory.add_product(name, price, stock)
+           
+            service.add_new_product(name, price, stock)
         elif choice == "3":
             inventory.view_products()
         elif choice == "4":
@@ -53,9 +57,10 @@ def main_menu():
             break
         else:
          print("Invalid choice. Please try again.")
-from models.product import Product
+         
+         
+if __name__ == "__main__":
+    main_menu()
 
-lipstick = Product("Lipstick", 450, 30)
 
-lipstick.display()
-    
+
