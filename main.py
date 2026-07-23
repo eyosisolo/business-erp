@@ -2,6 +2,8 @@
 from modules import inventory
 from models.product import Product
 from services.inventory_service import InventoryService
+from repositories.product_repository import ProductRepository
+
 service = InventoryService()
 print("Business ERP Database Started")
 #Mini Project 3 – Build a Simple Menu
@@ -21,7 +23,7 @@ def main_menu():
             inventory.create_product_table()
             print("Product table created!")
         elif choice == "2":
-          
+
             while True:
                 name = str(input("Enter product name:")).strip()
                 if name != "":
@@ -44,10 +46,17 @@ def main_menu():
             service.add_new_product(name, price, stock)
         elif choice == "3":
             inventory.view_products()
+    
         elif choice == "4":
-            name = input("Enter product name to update stock: ")
-            stock = int(input("Enter new stock quantity: "))
-            inventory.update_stock(name, stock)
+
+            keyword = input("Search: ")
+ 
+            products = ProductRepository().search(keyword)
+
+            for product in products:
+
+                print(product)
+        
         elif choice == "5":
             name = input("Enter product name to delete: ")
             inventory.delete_product(name)
@@ -62,5 +71,9 @@ def main_menu():
 if __name__ == "__main__":
     main_menu()
 
+products = ProductRepository().low_stock_products()
 
+for product in products:
+
+    print(product)
 
